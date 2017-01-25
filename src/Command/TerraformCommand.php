@@ -23,6 +23,12 @@ class TerraformCommand extends Command
     /** {@inheritDoc} */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('map created');
+        $output->writeln(
+            '##########' . PHP_EOL .
+            '##########' . PHP_EOL .
+            '##########' . PHP_EOL .
+            '##########' . PHP_EOL .
+            '##########'
+        );
     }
 }

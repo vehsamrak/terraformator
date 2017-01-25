@@ -13,19 +13,28 @@ class TerraformCommandTest extends \PHPUnit_Framework_TestCase
 {
 
     /** @test */
-    public function execute_createCommandWithoutInput_stringOutput()
+    public function execute_commandWithoutInput_stringOutput()
     {
         $application = new Application();
         $application->add(new TerraformCommand());
         $command = $application->find('create');
         $commandTester = new CommandTester($command);
-        $commandTester->execute(
-            [
-                'command'  => $command->getName(),
-            ]
-        );
+        $commandTester->execute(['command' => $command->getName()]);
         $output = $commandTester->getDisplay();
 
-        $this->assertEquals('map created' . PHP_EOL, $output);
+        // map of certain width
+        $mapWidth = 10;
+        $this->assertRegExp(
+            sprintf(
+                '/.{%d}%s.{%d}%s.{%d}%s.{%d}%s.{%d}%s/',
+                $mapWidth, PHP_EOL,
+                $mapWidth, PHP_EOL,
+                $mapWidth, PHP_EOL,
+                $mapWidth, PHP_EOL,
+                $mapWidth, PHP_EOL
+
+            ),
+            $output
+        );
     }
 }
