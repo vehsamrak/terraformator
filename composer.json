@@ -9,7 +9,16 @@
             "email": "smonkl@bk.ru"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Vehsa\\UniqueWordsCounter\\": "src/"
+        }
+    },
     "require": {
+        "php": ">=7.1.0",
         "symfony/console": "^3.2"
+    },
+    "require-dev": {
+        "phake/phake": "2.*"
     }
 }
