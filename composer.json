@@ -19,6 +19,7 @@
         "symfony/console": "^3.2"
     },
     "require-dev": {
-        "phake/phake": "2.*"
+        "phake/phake": "2.*",
+        "phpunit/phpunit": "5.7.7"
     }
 }
