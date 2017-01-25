@@ -1,0 +1,13 @@
+{
+    "name": "vehsamrak/terraformator",
+    "description": "Game map creator",
+    "type": "project",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Petr Karmashev",
+            "email": "smonkl@bk.ru"
+        }
+    ],
+    "require": {}
+}
