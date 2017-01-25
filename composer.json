@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Vehsa\\UniqueWordsCounter\\": "src/"
+            "Vehsamrak\\Terraformator\\": "src/"
         }
     },
     "require": {
