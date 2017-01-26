@@ -25,7 +25,7 @@ class MapTest extends \PHPUnit_Framework_TestCase
     public function add_emptyMap_mapLocationAddedToMap()
     {
         $map = new Map();
-        $mapLocation = new MapLocation(0, 0, LocationTypeEnum::DEEP_FOREST(), BiomEnum::FOREST());
+        $mapLocation = \Phake::mock(MapLocation::class);
 
         $map->add($mapLocation);
 
