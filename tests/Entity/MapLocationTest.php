@@ -13,7 +13,7 @@ class MapLocationTest extends \PHPUnit_Framework_TestCase
 {
 
     /** @test */
-    public function construct_XAndYAndTypeAndBiom_newMapLocationCreated()
+    public function construct_XAndYAndTypeAndBiom_newMapLocationCreated(): void
     {
         $x = 0;
         $y = 0;
