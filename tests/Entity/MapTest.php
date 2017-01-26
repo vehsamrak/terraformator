@@ -4,8 +4,6 @@ namespace Tests\Entity;
 
 use Vehsamrak\Terraformator\Entity\Map;
 use Vehsamrak\Terraformator\Entity\MapLocation;
-use Vehsamrak\Terraformator\Enum\BiomEnum;
-use Vehsamrak\Terraformator\Enum\LocationTypeEnum;
 
 /**
  * @author Vehsamrak
