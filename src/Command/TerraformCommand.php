@@ -12,6 +12,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 class TerraformCommand extends Command
 {
 
+    private const MAP_WIDTH = 60;
+    private const MAP_HEIGHT = 30;
+
     /** {@inheritDoc} */
     protected function configure()
     {
@@ -23,12 +26,20 @@ class TerraformCommand extends Command
     /** {@inheritDoc} */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln(
-            '##########' . PHP_EOL .
-            '##########' . PHP_EOL .
-            '##########' . PHP_EOL .
-            '##########' . PHP_EOL .
-            '##########'
-        );
+        $map = '';
+
+        for ($y = 1; $y <= self::MAP_HEIGHT; $y++) {
+            for ($x = 1; $x <= self::MAP_WIDTH; $x++) {
+                $mapTypes = ['#', '_', '.', '^'];
+                $mapType = array_rand($mapTypes);
+                $map .= $mapTypes[$mapType];
+            }
+
+            $map .= PHP_EOL;
+        }
+
+        unset($x, $y);
+
+        $output->writeln($map);
     }
 }
