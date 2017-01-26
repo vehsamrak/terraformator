@@ -3,6 +3,9 @@
 namespace Tests\Entity;
 
 use Vehsamrak\Terraformator\Entity\Map;
+use Vehsamrak\Terraformator\Entity\MapLocation;
+use Vehsamrak\Terraformator\Enum\BiomEnum;
+use Vehsamrak\Terraformator\Enum\LocationTypeEnum;
 
 /**
  * @author Vehsamrak
@@ -16,5 +19,16 @@ class MapTest extends \PHPUnit_Framework_TestCase
         $map = new Map();
 
         $this->assertInstanceOf(Map::class, $map);
+    }
+
+    /** @test */
+    public function add_emptyMap_mapLocationAddedToMap()
+    {
+        $map = new Map();
+        $mapLocation = new MapLocation(0, 0, LocationTypeEnum::DEEP_FOREST(), BiomEnum::FOREST());
+
+        $map->add($mapLocation);
+
+        $this->assertCount(1, $map);
     }
 }
