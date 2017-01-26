@@ -36,7 +36,7 @@ class TerraformCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function execute_CommandWithoutInputExecutedThreeTimes_resultsAreNotEqual(): void
+    public function execute_CommandWithoutInputExecutedTwoTimes_resultsAreNotEqual(): void
     {
         $command = $this->createCommand();
         $commandTester = new CommandTester($command);
@@ -45,12 +45,8 @@ class TerraformCommandTest extends \PHPUnit_Framework_TestCase
         $firstOutput = $commandTester->getDisplay();
         $commandTester->execute(['command' => $command->getName()]);
         $secondOutput = $commandTester->getDisplay();
-        $commandTester->execute(['command' => $command->getName()]);
-        $thirdOutput = $commandTester->getDisplay();
 
         $this->assertNotEquals($firstOutput, $secondOutput);
-        $this->assertNotEquals($secondOutput, $thirdOutput);
-        $this->assertNotEquals($firstOutput, $thirdOutput);
     }
 
     private function createCommand(): Command
