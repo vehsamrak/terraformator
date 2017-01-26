@@ -8,7 +8,7 @@ use Vehsamrak\Terraformator\Enum\LocationTypeEnum;
 /**
  * @author Vehsamrak
  */
-class MapLocation
+class Location
 {
 
     /** @var int */

@@ -3,7 +3,7 @@
 namespace Tests\Entity;
 
 use Vehsamrak\Terraformator\Entity\Map;
-use Vehsamrak\Terraformator\Entity\MapLocation;
+use Vehsamrak\Terraformator\Entity\Location;
 
 /**
  * @author Vehsamrak
@@ -23,7 +23,7 @@ class MapTest extends \PHPUnit_Framework_TestCase
     public function add_emptyMap_mapLocationAddedToMap()
     {
         $map = new Map();
-        $mapLocation = \Phake::mock(MapLocation::class);
+        $mapLocation = \Phake::mock(Location::class);
 
         $map->add($mapLocation);
 
