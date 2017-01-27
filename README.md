@@ -2,8 +2,8 @@
 Game map generator command-line tool.
 
 [![Build Status](https://scrutinizer-ci.com/g/Vehsamrak/terraformator/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Vehsamrak/terraformator/build-status/master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Vehsamrak/terraformator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Vehsamrak/terraformator/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/Vehsamrak/terraformator/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Vehsamrak/terraformator/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Vehsamrak/terraformator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Vehsamrak/terraformator/?branch=master)
 
 ### Requirements
 * PHP >= 7.1
