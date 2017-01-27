@@ -1,0 +1,11 @@
+build:
+  environment:
+    php:
+      version: 7.1.0
+  tests:
+    override:
+      -
+        command: phpunit --coverage-clover=my-coverage-file test
+        coverage:
+          file: my-coverage-file
+          format: php-clover
