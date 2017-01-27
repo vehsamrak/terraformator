@@ -20,13 +20,19 @@ class Map extends ArrayCollection
     }
 
     /** {@inheritDoc} */
-    public function add($element)
+    public function add($element): bool
     {
         if (!$element instanceof Location) {
         	throw new InvalidTypeException();
         }
 
         return parent::add($element);
+    }
+
+    /** {@inheritDoc} */
+    public function first(): Location
+    {
+        return parent::first();
     }
 }
 

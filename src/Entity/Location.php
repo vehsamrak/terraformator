@@ -27,4 +27,9 @@ class Location
         $this->type = $type;
         $this->biom = $biom;
     }
+
+    public function getBiom(): Biom
+    {
+        return $this->biom;
+    }
 }

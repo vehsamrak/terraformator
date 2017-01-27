@@ -13,7 +13,7 @@ class LocationGeneratorTest extends \PHPUnit_Framework_TestCase
 {
 
     /** @test */
-    public function generateLocation_noParameters_locationGenerated()
+    public function generateLocation_noParameters_locationGenerated(): void
     {
         $generator = new LocationGenerator();
         $map = \Phake::mock(Map::class);
@@ -23,5 +23,11 @@ class LocationGeneratorTest extends \PHPUnit_Framework_TestCase
         $location = $generator->generateLocation($map, $x, $y);
 
         $this->assertInstanceOf(Location::class, $location);
+    }
+    
+    /** @test */
+    public function generateLocation_mapWithForestBiomLocationsAroundGeneratedLocation_generatedLocation()
+    {
+        
     }
 }
