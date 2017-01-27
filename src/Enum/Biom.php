@@ -9,7 +9,7 @@ use MyCLabs\Enum\Enum;
  * @method static FOREST()
  * @method static FIELD()
  */
-class BiomEnum extends Enum
+class Biom extends Enum
 {
     public const FOREST = 'forest';
     public const FIELD = 'field';

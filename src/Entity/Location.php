@@ -2,8 +2,8 @@
 
 namespace Vehsamrak\Terraformator\Entity;
 
-use Vehsamrak\Terraformator\Enum\BiomEnum;
-use Vehsamrak\Terraformator\Enum\LocationTypeEnum;
+use Vehsamrak\Terraformator\Enum\Biom;
+use Vehsamrak\Terraformator\Enum\LocationType;
 
 /**
  * @author Vehsamrak
@@ -15,12 +15,12 @@ class Location
     private $x;
     /** @var int */
     private $y;
-    /** @var LocationTypeEnum */
+    /** @var LocationType */
     private $type;
-    /** @var BiomEnum */
+    /** @var Biom */
     private $biom;
 
-    public function __construct(int $x, int $y, LocationTypeEnum $type, BiomEnum $biom)
+    public function __construct(int $x, int $y, LocationType $type, Biom $biom)
     {
         $this->x = $x;
         $this->y = $y;

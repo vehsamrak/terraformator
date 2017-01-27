@@ -3,8 +3,8 @@
 namespace Tests\Entity;
 
 use Vehsamrak\Terraformator\Entity\Location;
-use Vehsamrak\Terraformator\Enum\BiomEnum;
-use Vehsamrak\Terraformator\Enum\LocationTypeEnum;
+use Vehsamrak\Terraformator\Enum\Biom;
+use Vehsamrak\Terraformator\Enum\LocationType;
 
 /**
  * @author Vehsamrak
@@ -17,8 +17,8 @@ class MapLocationTest extends \PHPUnit_Framework_TestCase
     {
         $x = 0;
         $y = 0;
-        $type = LocationTypeEnum::DEEP_FOREST();
-        $biom = BiomEnum::FOREST();
+        $type = LocationType::DEEP_FOREST();
+        $biom = Biom::FOREST();
 
         $mapLocation = new Location($x, $y, $type, $biom);
 
