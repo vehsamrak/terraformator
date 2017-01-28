@@ -35,6 +35,17 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($biom->equals(Biom::FIELD()));
     }
 
+    /** @test */
+    public function qualifyBiom_emptyMap_randomBiomReturned(): void
+    {
+        $qualifier = new BiomQualifier();
+        $map = new Map();
+
+        $biom = $qualifier->qualifyBiom($map);
+
+        $this->assertInstanceOf(Biom::class, $biom);
+    }
+
     private function createMapWithSameLocations(Biom $biom, int $numberOfLocations): Map
     {
         $location = \Phake::mock(Location::class);

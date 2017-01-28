@@ -30,9 +30,15 @@ class Map extends ArrayCollection
     }
 
     /** {@inheritDoc} */
-    public function first(): Location
+    public function first(): ?Location
     {
-        return parent::first();
+        $firstLocation = parent::first();
+
+        if (!$firstLocation) {
+        	return null;
+        }
+
+        return $firstLocation;
     }
 }
 
