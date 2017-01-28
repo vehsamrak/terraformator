@@ -16,20 +16,22 @@ class BiomQualifier
     {
         $firstLocationInMap = $map->first();
 
-        if ($firstLocationInMap) {
-            $firstBiom = $firstLocationInMap->getBiom();
-            $locationsAreSame = true;
+        if (!$firstLocationInMap) {
+            return $this->getRandomBiom();
+        }
 
-            /** @var Location $location */
-            foreach ($map->toArray() as $location) {
-                if (!$location->getBiom()->equals($firstBiom)) {
-                    $locationsAreSame = false;
-                }
-            }
+        $firstBiom = $firstLocationInMap->getBiom();
+        $locationsAreSame = true;
 
-            if ($map->count() == 8 && $locationsAreSame) {
-                return $firstBiom;
+        /** @var Location $location */
+        foreach ($map->toArray() as $location) {
+            if (!$location->getBiom()->equals($firstBiom)) {
+                $locationsAreSame = false;
             }
+        }
+
+        if ($map->count() == 8 && $locationsAreSame) {
+            return $firstBiom;
         }
 
         return $this->getRandomBiom();
