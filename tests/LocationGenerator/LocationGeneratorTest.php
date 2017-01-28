@@ -16,7 +16,7 @@ class LocationGeneratorTest extends \PHPUnit_Framework_TestCase
     public function generateLocation_noParameters_locationGenerated(): void
     {
         $generator = new LocationGenerator();
-        $map = \Phake::mock(Map::class);
+        $map = new Map();
         $x = 0;
         $y = 0;
 

@@ -4,7 +4,6 @@ namespace Vehsamrak\Terraformator\LocationGenerator;
 
 use Vehsamrak\Terraformator\Entity\Location;
 use Vehsamrak\Terraformator\Entity\Map;
-use Vehsamrak\Terraformator\Enum\Biom;
 use Vehsamrak\Terraformator\Enum\LocationType;
 
 /**
@@ -13,10 +12,17 @@ use Vehsamrak\Terraformator\Enum\LocationType;
 class LocationGenerator
 {
 
+    private $biomQualifier;
+
+    public function __construct(BiomQualifier $biomQualifier = null)
+    {
+        $this->biomQualifier = $biomQualifier ?? new BiomQualifier();
+    }
+
     public function generateLocation(Map $map, int $x, int $y): Location
     {
         $type = LocationType::DEEP_FOREST();
-        $biom = Biom::FOREST();
+        $biom = $this->biomQualifier->qualifyBiom($map);
 
         return new Location($x, $y, $type, $biom);
     }
