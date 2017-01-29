@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\LocationGenerator;
+namespace Tests\LocationGenerator;
 
 use Vehsamrak\Terraformator\Entity\Location;
 use Vehsamrak\Terraformator\Entity\Map;
