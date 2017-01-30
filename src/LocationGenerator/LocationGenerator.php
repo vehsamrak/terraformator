@@ -11,7 +11,7 @@ use Vehsamrak\Terraformator\Enum\LocationType;
  */
 class LocationGenerator
 {
-
+    /** @var BiomQualifier $biomQualifier */
     private $biomQualifier;
 
     public function __construct(BiomQualifier $biomQualifier = null)
