@@ -56,7 +56,7 @@ class TerraformCommand extends Command
 
         unset($x, $y);
 
-        $stringMap = $this->mapTransformer->convertToString($map);
+        $stringMap = $this->mapTransformer->convertToString($map, self::MAP_WIDTH);
 
         $output->writeln($stringMap);
     }

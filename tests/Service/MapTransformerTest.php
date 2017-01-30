@@ -13,8 +13,9 @@ use Vehsamrak\Terraformator\Service\MapTransformer;
 class MapTransformerTest extends \PHPUnit_Framework_TestCase
 {
 
-    const FOREST_SYMBOL = '^';
-    const FIELD_SYMBOL = '_';
+    private const FOREST_SYMBOL = '^';
+    private const FIELD_SYMBOL = '_';
+    private const MAP_WIDTH = 60;
 
     /** @test */
     public function convertToString_emptyMap_emptyStringReturned(): void
@@ -49,6 +50,25 @@ class MapTransformerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(self::FOREST_SYMBOL . self::FIELD_SYMBOL, $stringMap);
     }
 
+    /** @test */
+    public function convertToString_mapWith100LocationsAndMapWidth_stringSeparatedWithEndOfLineAccordingToMapWidth(): void
+    {
+        $map = $this->createMapWithForestLocations(100);
+        $mapTransformer = new MapTransformer();
+
+        $stringMap = $mapTransformer->convertToString($map, self::MAP_WIDTH);
+
+        // map of certain width
+        $this->assertRegExp(
+            sprintf(
+                '/\%s{60}%s\%s{40}%s/',
+                self::FOREST_SYMBOL, PHP_EOL,
+                self::FOREST_SYMBOL, PHP_EOL
+            ),
+            $stringMap
+        );
+    }
+
     private function createMap(): Map
     {
         return new Map();
@@ -76,6 +96,20 @@ class MapTransformerTest extends \PHPUnit_Framework_TestCase
         $map = $this->createMap();
         $map->add($forestLocation);
         $map->add($fieldLocation);
+
+        return $map;
+    }
+
+    private function createMapWithForestLocations(int $numberOfLocations): Map
+    {
+        $forestLocation = \Phake::mock(Location::class);
+        \Phake::when($forestLocation)->getBiom()->thenReturn(Biom::FOREST());
+
+        $map = $this->createMap();
+
+        for ($i = 0; $i < $numberOfLocations; $i++) {
+            $map->add($forestLocation);
+        }
 
         return $map;
     }
