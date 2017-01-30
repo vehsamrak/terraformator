@@ -30,6 +30,8 @@ class MapTransformer
         $biomSymbolMatrix = [
             Biom::FOREST => '^',
             Biom::FIELD  => '_',
+            Biom::DEEP_FOREST => '#',
+            Biom::ROAD => '.',
         ];
 
         return $biomSymbolMatrix[$biom->getValue()];
