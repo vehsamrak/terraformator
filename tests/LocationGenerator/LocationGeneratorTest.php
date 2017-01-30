@@ -24,10 +24,4 @@ class LocationGeneratorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(Location::class, $location);
     }
-    
-    /** @test */
-    public function generateLocation_mapWithForestBiomLocationsAroundGeneratedLocation_generatedLocation()
-    {
-        
-    }
 }
