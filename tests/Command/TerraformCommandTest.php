@@ -22,7 +22,7 @@ class TerraformCommandTest extends \PHPUnit_Framework_TestCase
         $commandTester->execute(['command' => $command->getName()]);
         $output = $commandTester->getDisplay();
 
-        // map of certain width
+        // map of certain width delimited with end of line
         $mapWidth = 60;
         $this->assertRegExp(
             sprintf(
