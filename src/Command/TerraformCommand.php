@@ -54,7 +54,7 @@ class TerraformCommand extends Command
             }
         }
 
-        $stringMap = $this->mapTransformer->convertToString($map, self::MAP_WIDTH);
+        $stringMap = $this->mapTransformer->transformToString($map, self::MAP_WIDTH);
 
         $output->writeln($stringMap);
     }

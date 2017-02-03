@@ -12,7 +12,7 @@ use Vehsamrak\Terraformator\Enum\Biom;
 class MapTransformer
 {
 
-    public function convertToString(Map $map, int $width = 0): string
+    public function transformToString(Map $map, int $width = 0): string
     {
         $stringMap = '';
 

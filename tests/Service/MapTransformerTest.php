@@ -18,45 +18,45 @@ class MapTransformerTest extends \PHPUnit_Framework_TestCase
     private const MAP_WIDTH = 60;
 
     /** @test */
-    public function convertToString_emptyMap_emptyStringReturned(): void
+    public function transformToString_emptyMap_emptyStringReturned(): void
     {
         $map = $this->createMap();
         $mapTransformer = new MapTransformer();
 
-        $stringMap = $mapTransformer->convertToString($map);
+        $stringMap = $mapTransformer->transformToString($map);
 
         $this->assertEquals('', $stringMap);
     }
 
     /** @test */
-    public function convertToString_mapWithOneForestLocation_stringWithOneSymbolReturned(): void
+    public function transformToString_mapWithOneForestLocation_stringWithOneSymbolReturned(): void
     {
         $map = $this->createMapWithSingleForestLocation();
         $mapTransformer = new MapTransformer();
 
-        $stringMap = $mapTransformer->convertToString($map);
+        $stringMap = $mapTransformer->transformToString($map);
 
         $this->assertEquals(self::FOREST_SYMBOL, $stringMap);
     }
 
     /** @test */
-    public function convertToString_mapWithOneForestAndOneFieldLocations_stringWithTwoSymbolsReturned(): void
+    public function transformToString_mapWithOneForestAndOneFieldLocations_stringWithTwoSymbolsReturned(): void
     {
         $map = $this->createMapWithOneForestAndOneFieldLocations();
         $mapTransformer = new MapTransformer();
 
-        $stringMap = $mapTransformer->convertToString($map);
+        $stringMap = $mapTransformer->transformToString($map);
 
         $this->assertEquals(self::FOREST_SYMBOL . self::FIELD_SYMBOL, $stringMap);
     }
 
     /** @test */
-    public function convertToString_mapWith100LocationsAndMapWidth_stringSeparatedWithEndOfLineAccordingToMapWidth(): void
+    public function transformToString_mapWith100LocationsAndMapWidth_stringSeparatedWithEndOfLineAccordingToMapWidth(): void
     {
         $map = $this->createMapWithForestLocations(100);
         $mapTransformer = new MapTransformer();
 
-        $stringMap = $mapTransformer->convertToString($map, self::MAP_WIDTH);
+        $stringMap = $mapTransformer->transformToString($map, self::MAP_WIDTH);
 
         // map of certain width
         $this->assertRegExp(
