@@ -21,8 +21,9 @@ class LocationGenerator
 
     public function generateLocation(Map $map, int $x, int $y): Location
     {
-        $type = LocationType::DEEP_FOREST();
         $biom = $this->biomQualifier->qualifyBiom($map);
+        // TODO: qualify location type by biom
+        $type = LocationType::DEEP_FOREST();
 
         return new Location($x, $y, $type, $biom);
     }
