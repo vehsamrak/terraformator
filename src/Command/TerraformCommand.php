@@ -8,6 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Vehsamrak\Terraformator\Entity\Map;
 use Vehsamrak\Terraformator\LocationGenerator\LocationGenerator;
 use Vehsamrak\Terraformator\Service\MapTransformer;
+use Vehsamrak\Terraformator\Service\RandomGenerator;
 
 /**
  * @author Vehsamrak
@@ -27,10 +28,12 @@ class TerraformCommand extends Command
     public function __construct(
         $name = null,
         LocationGenerator $locationGenerator = null,
-        MapTransformer $mapTransformer = null
+        MapTransformer $mapTransformer = null,
+        RandomGenerator $randomGenerator = null
     ) {
         $this->mapTransformer = $mapTransformer ?? new MapTransformer();
-        $this->locationGenerator = $locationGenerator ?? new LocationGenerator();
+        $randomGenerator = $randomGenerator ?? new RandomGenerator();
+        $this->locationGenerator = $locationGenerator ?? new LocationGenerator(null, $randomGenerator);
         parent::__construct($name = null);
     }
 

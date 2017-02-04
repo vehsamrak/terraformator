@@ -8,8 +8,8 @@ namespace Vehsamrak\Terraformator\Service;
 class RandomGenerator
 {
 
-    public function getRandomKeyFromArray(array $array): int
+    public function getRandomKeyFromArray(array $array): string
     {
-        return array_rand($array);
+        return (string) array_rand($array);
     }
 }

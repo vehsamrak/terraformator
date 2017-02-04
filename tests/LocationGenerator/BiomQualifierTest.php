@@ -6,6 +6,7 @@ use Vehsamrak\Terraformator\Entity\Location;
 use Vehsamrak\Terraformator\Entity\Map;
 use Vehsamrak\Terraformator\Enum\Biom;
 use Vehsamrak\Terraformator\LocationGenerator\BiomQualifier;
+use Vehsamrak\Terraformator\Service\RandomGenerator;
 
 /**
  * @author Vehsamrak
@@ -16,7 +17,7 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function qualifyBiom_mapWithEightForestBioms_biomQualifiedAsForest(): void
     {
-        $qualifier = new BiomQualifier();
+        $qualifier = $this->createBiomGenerator();
         $map = $this->createMapWithSameLocations(Biom::FOREST(), 8);
 
         $biom = $qualifier->qualifyBiom($map);
@@ -27,7 +28,7 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function qualifyBiom_mapWithEightFieldBioms_biomQualifiedAsField(): void
     {
-        $qualifier = new BiomQualifier();
+        $qualifier = $this->createBiomGenerator();
         $map = $this->createMapWithSameLocations(Biom::FIELD(), 8);
 
         $biom = $qualifier->qualifyBiom($map);
@@ -38,7 +39,7 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function qualifyBiom_emptyMap_randomBiomReturned(): void
     {
-        $qualifier = new BiomQualifier();
+        $qualifier = $this->createBiomGenerator();
         $map = new Map();
 
         $biom = $qualifier->qualifyBiom($map);
@@ -58,5 +59,15 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
         }
 
         return $map;
+    }
+
+    /**
+     * @return BiomQualifier
+     */
+    private function createBiomGenerator(): BiomQualifier
+    {
+        $randomGenerator = new RandomGenerator();
+
+        return new BiomQualifier($randomGenerator);
     }
 }

@@ -13,7 +13,7 @@ class RandomGeneratorTest extends \PHPUnit_Framework_TestCase
     public function getRandomKeyFromArray_emptyArray_errorThrowed(): void
     {
         $randomGenerator = new RandomGenerator();
-        $firstElementKey = 0;
+        $firstElementKey = 'first element';
         $arrayWithSingleElement = [$firstElementKey => '1'];
 
         $result = $randomGenerator->getRandomKeyFromArray($arrayWithSingleElement);
