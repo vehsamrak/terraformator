@@ -5,7 +5,6 @@ namespace Vehsamrak\Terraformator\LocationGenerator;
 use Vehsamrak\Terraformator\Entity\Location;
 use Vehsamrak\Terraformator\Entity\Map;
 use Vehsamrak\Terraformator\Enum\LocationType;
-use Vehsamrak\Terraformator\Service\RandomGenerator;
 
 /**
  * @author Vehsamrak
