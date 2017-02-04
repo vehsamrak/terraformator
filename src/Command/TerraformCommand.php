@@ -39,7 +39,7 @@ class TerraformCommand extends Command
     {
         $this->setName('create');
         $this->setDescription('Create new map');
-        $this->setHelp('This command allows you to create game map.');;
+        $this->setHelp('This command allows you to create game map.');
     }
 
     /** {@inheritDoc} */

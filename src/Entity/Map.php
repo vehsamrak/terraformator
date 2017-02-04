@@ -23,7 +23,7 @@ class Map extends ArrayCollection
     public function add($element): bool
     {
         if (!$element instanceof Location) {
-        	throw new InvalidTypeException();
+            throw new InvalidTypeException();
         }
 
         return parent::add($element);
@@ -35,7 +35,7 @@ class Map extends ArrayCollection
         $firstLocation = parent::first();
 
         if (!$firstLocation) {
-        	return null;
+            return null;
         }
 
         return $firstLocation;
