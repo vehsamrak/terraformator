@@ -26,15 +26,12 @@ class TerraformCommand extends Command
 
     /** {@inheritDoc} */
     public function __construct(
-        $name = null,
-        LocationGenerator $locationGenerator = null,
-        MapTransformer $mapTransformer = null,
-        RandomGenerator $randomGenerator = null
+        LocationGenerator $locationGenerator,
+        MapTransformer $mapTransformer
     ) {
-        $this->mapTransformer = $mapTransformer ?? new MapTransformer();
-        $randomGenerator = $randomGenerator ?? new RandomGenerator();
-        $this->locationGenerator = $locationGenerator ?? new LocationGenerator(null, $randomGenerator);
-        parent::__construct($name = null);
+        $this->mapTransformer = $mapTransformer;
+        $this->locationGenerator = $locationGenerator;
+        parent::__construct();
     }
 
     /** {@inheritDoc} */

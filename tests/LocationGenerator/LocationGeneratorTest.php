@@ -4,7 +4,9 @@ namespace Tests\LocationGenerator;
 
 use Vehsamrak\Terraformator\Entity\Location;
 use Vehsamrak\Terraformator\Entity\Map;
+use Vehsamrak\Terraformator\LocationGenerator\BiomQualifier;
 use Vehsamrak\Terraformator\LocationGenerator\LocationGenerator;
+use Vehsamrak\Terraformator\Service\RandomGenerator;
 
 /**
  * @author Vehsamrak
@@ -13,9 +15,11 @@ class LocationGeneratorTest extends \PHPUnit_Framework_TestCase
 {
 
     /** @test */
-    public function generateLocation_noParameters_locationGenerated(): void
+    public function generateLocation_emptyMapAndFormalXandY_locationGenerated(): void
     {
-        $generator = new LocationGenerator();
+        $randomGenerator = new RandomGenerator();
+        $biomQualifier = new BiomQualifier($randomGenerator);
+        $generator = new LocationGenerator($biomQualifier);
         $map = new Map();
         $x = 0;
         $y = 0;

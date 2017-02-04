@@ -6,6 +6,10 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
 use Vehsamrak\Terraformator\Command\TerraformCommand;
+use Vehsamrak\Terraformator\LocationGenerator\BiomQualifier;
+use Vehsamrak\Terraformator\LocationGenerator\LocationGenerator;
+use Vehsamrak\Terraformator\Service\MapTransformer;
+use Vehsamrak\Terraformator\Service\RandomGenerator;
 
 /**
  * @author Vehsamrak
@@ -52,7 +56,11 @@ class TerraformCommandTest extends \PHPUnit_Framework_TestCase
     private function createCommand(): Command
     {
         $application = new Application();
-        $application->add(new TerraformCommand());
+        $randomGenerator = new RandomGenerator();
+        $biomQualifier = new BiomQualifier($randomGenerator);
+        $locationGenerator = new LocationGenerator($biomQualifier);
+        $mapTransformer = new MapTransformer();
+        $application->add(new TerraformCommand($locationGenerator, $mapTransformer));
         $command = $application->find('create');
 
         return $command;

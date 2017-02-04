@@ -14,13 +14,10 @@ class LocationGenerator
 {
     /** @var BiomQualifier $biomQualifier */
     private $biomQualifier;
-    /** @var RandomGenerator $randomGenerator */
-    private $randomGenerator;
 
-    public function __construct(BiomQualifier $biomQualifier = null, RandomGenerator $randomGenerator = null)
+    public function __construct(BiomQualifier $biomQualifier)
     {
-        $this->randomGenerator = $randomGenerator ?? new RandomGenerator();
-        $this->biomQualifier = $biomQualifier ?? new BiomQualifier($this->randomGenerator);
+        $this->biomQualifier = $biomQualifier;
     }
 
     public function generateLocation(Map $map, int $x, int $y): Location
