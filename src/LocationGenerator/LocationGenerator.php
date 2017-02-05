@@ -3,7 +3,7 @@
 namespace Vehsamrak\Terraformator\LocationGenerator;
 
 use Vehsamrak\Terraformator\Entity\Location;
-use Vehsamrak\Terraformator\Entity\Map;
+use Vehsamrak\Terraformator\Entity\SurroundingMap;
 use Vehsamrak\Terraformator\Enum\LocationType;
 
 /**
@@ -19,7 +19,7 @@ class LocationGenerator
         $this->biomQualifier = $biomQualifier;
     }
 
-    public function generateLocation(Map $map, int $x, int $y): Location
+    public function generateLocation(SurroundingMap $map, int $x, int $y): Location
     {
         $biom = $this->biomQualifier->qualifyBiom($map);
         // TODO: qualify location type by biom

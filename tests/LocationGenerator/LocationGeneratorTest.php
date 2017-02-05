@@ -3,7 +3,7 @@
 namespace Tests\LocationGenerator;
 
 use Vehsamrak\Terraformator\Entity\Location;
-use Vehsamrak\Terraformator\Entity\Map;
+use Vehsamrak\Terraformator\Entity\SurroundingMap;
 use Vehsamrak\Terraformator\LocationGenerator\BiomQualifier;
 use Vehsamrak\Terraformator\LocationGenerator\LocationGenerator;
 use Vehsamrak\Terraformator\Service\RandomGenerator;
@@ -20,7 +20,7 @@ class LocationGeneratorTest extends \PHPUnit_Framework_TestCase
         $randomGenerator = new RandomGenerator();
         $biomQualifier = new BiomQualifier($randomGenerator);
         $generator = new LocationGenerator($biomQualifier);
-        $map = new Map();
+        $map = new SurroundingMap();
         $x = 0;
         $y = 0;
 
