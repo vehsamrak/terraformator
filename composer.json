@@ -11,7 +11,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Vehsamrak\\Terraformator\\": "src/"
+            "Vehsamrak\\Terraformator\\": "src/",
+            "Tests\\": "tests/"
         }
     },
     "require": {
