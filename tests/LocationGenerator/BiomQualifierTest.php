@@ -2,6 +2,7 @@
 
 namespace Tests\LocationGenerator;
 
+use Tests\Service\RandomTester;
 use Vehsamrak\Terraformator\Entity\Location;
 use Vehsamrak\Terraformator\Entity\PreviousLocationMap;
 use Vehsamrak\Terraformator\Enum\Biom;
@@ -11,7 +12,7 @@ use Vehsamrak\Terraformator\Service\RandomGenerator;
 /**
  * @author Vehsamrak
  */
-class BiomQualifierTest extends \PHPUnit_Framework_TestCase
+class BiomQualifierTest extends RandomTester
 {
 
     /** @test */
@@ -50,8 +51,7 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function qualifyBiom_surroundingMapWithOneForestLocation_deepForestBiomReturned(): void
     {
-        $randomGenerator = $this->createRandom(Biom::DEEP_FOREST()->getKey());
-        $qualifier = $this->createBiomGenerator($randomGenerator);
+        $qualifier = $this->createBiomGenerator();
         $surroundingMap = $this->createSurroundingMapWithSameLocations(Biom::DEEP_FOREST(), 1);
 
         $biom = $qualifier->qualifyBiom($surroundingMap);
@@ -62,8 +62,7 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function qualifyBiom_surroundingMapWithTwoForestLocations_deepForestBiomReturned(): void
     {
-        $randomGenerator = $this->createRandom(Biom::DEEP_FOREST()->getKey());
-        $qualifier = $this->createBiomGenerator($randomGenerator);
+        $qualifier = $this->createBiomGenerator();
         $surroundingMap = $this->createSurroundingMapWithSameLocations(Biom::DEEP_FOREST(), 2);
 
         $biom = $qualifier->qualifyBiom($surroundingMap);
@@ -74,8 +73,7 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function qualifyBiom_surroundingMapWithTwoFieldLocations_fieldBiomReturned(): void
     {
-        $randomGenerator = $this->createRandom(Biom::FIELD()->getKey());
-        $qualifier = $this->createBiomGenerator($randomGenerator);
+        $qualifier = $this->createBiomGenerator();
         $surroundingMap = $this->createSurroundingMapWithSameLocations(Biom::FIELD(), 1);
 
         $biom = $qualifier->qualifyBiom($surroundingMap);
@@ -97,18 +95,8 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
         return $surroundingMap;
     }
 
-    private function createBiomGenerator(RandomGenerator $randomGenerator = null): BiomQualifier
+    private function createBiomGenerator(): BiomQualifier
     {
-        $randomGenerator = $randomGenerator ?? new RandomGenerator();
-
-        return new BiomQualifier($randomGenerator);
-    }
-
-    private function createRandom(string $randomResult): RandomGenerator
-    {
-        $randomGenerator = \Phake::mock(RandomGenerator::class);
-        \Phake::when($randomGenerator)->getRandomKeyFromArray(\Phake::anyParameters())->thenReturn($randomResult);
-
-        return $randomGenerator;
+        return new BiomQualifier(new RandomGenerator());
     }
 }
