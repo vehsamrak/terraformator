@@ -3,7 +3,7 @@
 namespace Tests\LocationGenerator;
 
 use Vehsamrak\Terraformator\Entity\Location;
-use Vehsamrak\Terraformator\Entity\SurroundingMap;
+use Vehsamrak\Terraformator\Entity\PreviousLocationMap;
 use Vehsamrak\Terraformator\Enum\Biom;
 use Vehsamrak\Terraformator\LocationGenerator\BiomQualifier;
 use Vehsamrak\Terraformator\Service\RandomGenerator;
@@ -18,7 +18,7 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
     public function qualifyBiom_surroundingMapWithEightForestBioms_biomQualifiedAsForest(): void
     {
         $qualifier = $this->createBiomGenerator();
-        $surroundingMap = $this->createSurroundingMapWithSameLocations(Biom::FOREST(), 8);
+        $surroundingMap = $this->createSurroundingMapWithSameLocations(Biom::FOREST(), 4);
 
         $biom = $qualifier->qualifyBiom($surroundingMap);
 
@@ -29,7 +29,7 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
     public function qualifyBiom_surroundingMapWithEightFieldBioms_biomQualifiedAsField(): void
     {
         $qualifier = $this->createBiomGenerator();
-        $surroundingMap = $this->createSurroundingMapWithSameLocations(Biom::FIELD(), 8);
+        $surroundingMap = $this->createSurroundingMapWithSameLocations(Biom::FIELD(), 4);
 
         $biom = $qualifier->qualifyBiom($surroundingMap);
 
@@ -40,7 +40,7 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
     public function qualifyBiom_emptySurroundingMap_randomBiomReturned(): void
     {
         $qualifier = $this->createBiomGenerator();
-        $surroundingMap = new SurroundingMap();
+        $surroundingMap = new PreviousLocationMap();
 
         $biom = $qualifier->qualifyBiom($surroundingMap);
 
@@ -83,12 +83,12 @@ class BiomQualifierTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(Biom::FIELD(), $biom);
     }
 
-    private function createSurroundingMapWithSameLocations(Biom $biom, int $numberOfLocations): SurroundingMap
+    private function createSurroundingMapWithSameLocations(Biom $biom, int $numberOfLocations): PreviousLocationMap
     {
         $location = \Phake::mock(Location::class);
         \Phake::when($location)->getBiom()->thenReturn($biom);
 
-        $surroundingMap = new SurroundingMap();
+        $surroundingMap = new PreviousLocationMap();
 
         for ($i = 0; $i < $numberOfLocations; $i++) {
             $surroundingMap->add($location);

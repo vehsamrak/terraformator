@@ -3,7 +3,7 @@
 namespace Vehsamrak\Terraformator\LocationGenerator;
 
 use Vehsamrak\Terraformator\Entity\Location;
-use Vehsamrak\Terraformator\Entity\SurroundingMap;
+use Vehsamrak\Terraformator\Entity\PreviousLocationMap;
 use Vehsamrak\Terraformator\Enum\Biom;
 use Vehsamrak\Terraformator\Service\RandomGenerator;
 
@@ -21,7 +21,7 @@ class BiomQualifier
         $this->randomGenerator = $randomGenerator;
     }
 
-    public function qualifyBiom(SurroundingMap $map): Biom
+    public function qualifyBiom(PreviousLocationMap $map): Biom
     {
         $firstLocationInMap = $map->first();
 
@@ -39,7 +39,7 @@ class BiomQualifier
             }
         }
 
-        if ($map->count() == 8 && $locationsAreSame) {
+        if ($locationsAreSame) {
             return $firstBiom;
         }
 

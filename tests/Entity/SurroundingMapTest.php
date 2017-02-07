@@ -3,7 +3,7 @@
 namespace Tests\Entity;
 
 use Vehsamrak\Terraformator\Entity\Location;
-use Vehsamrak\Terraformator\Entity\SurroundingMap;
+use Vehsamrak\Terraformator\Entity\PreviousLocationMap;
 use Vehsamrak\Terraformator\Exception\TooManyLocationsException;
 
 /**
@@ -13,10 +13,10 @@ class SurroundingMapTest extends \PHPUnit_Framework_TestCase
 {
 
     /** @test */
-    public function add_surroundingMapWith8Locations_exceptionThrowed(): void
+    public function add_surroundingMapWith4Locations_exceptionThrowed(): void
     {
-        $locations = $this->createLocations(8);
-        $map = new SurroundingMap($locations);
+        $locations = $this->createLocations(4);
+        $map = new PreviousLocationMap($locations);
 
         $this->expectException(TooManyLocationsException::class);
 

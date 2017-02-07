@@ -6,7 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Vehsamrak\Terraformator\Entity\Map;
-use Vehsamrak\Terraformator\Entity\SurroundingMap;
+use Vehsamrak\Terraformator\Entity\PreviousLocationMap;
 use Vehsamrak\Terraformator\LocationGenerator\LocationGenerator;
 use Vehsamrak\Terraformator\Service\MapTransformer;
 
@@ -49,7 +49,7 @@ class TerraformCommand extends Command
 
         for ($y = 1; $y <= self::MAP_HEIGHT; $y++) {
             for ($x = 1; $x <= self::MAP_WIDTH; $x++) {
-                $surroundingMap = new SurroundingMap();
+                $surroundingMap = new PreviousLocationMap();
                 $location = $this->locationGenerator->generateLocation($surroundingMap, $x, $y);
                 $map->add($location);
             }

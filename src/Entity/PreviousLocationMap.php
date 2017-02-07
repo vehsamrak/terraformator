@@ -5,16 +5,16 @@ namespace Vehsamrak\Terraformator\Entity;
 use Vehsamrak\Terraformator\Exception\TooManyLocationsException;
 
 /**
- * Map with 8 or less locations to represend surroundings of central location (3x3 location square)
+ * Map with 3 or less locations to represend surroundings of new location on generation stage
  * @author Vehsamrak
  */
-class SurroundingMap extends Map
+class PreviousLocationMap extends Map
 {
 
     /** {@inheritDoc} */
     public function add($element): bool
     {
-        if ($this->count() < 8) {
+        if ($this->count() < 4) {
             return parent::add($element);
         } else {
             throw new TooManyLocationsException();
