@@ -49,7 +49,7 @@ class TerraformCommand extends Command
 
         for ($y = 1; $y <= self::MAP_HEIGHT; $y++) {
             for ($x = 1; $x <= self::MAP_WIDTH; $x++) {
-                $surroundingMap = new PreviousLocationMap();
+                $surroundingMap = $map->getPreviousLocations($x, $y);
                 $location = $this->locationGenerator->generateLocation($surroundingMap, $x, $y);
                 $map->add($location);
             }
