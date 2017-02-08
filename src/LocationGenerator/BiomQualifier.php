@@ -21,29 +21,20 @@ class BiomQualifier
         $this->randomGenerator = $randomGenerator;
     }
 
-    public function qualifyBiom(PreviousLocationMap $map): Biom
+    public function qualifyBiom(PreviousLocationMap $previousLocations): Biom
     {
-        $firstLocationInMap = $map->first();
+        $previousLocationsNumber = $previousLocations->count();
+        $newBiomProbability = $previousLocationsNumber > 0 ? 50 - $previousLocationsNumber * 10 : 100;
+        $randomPercent = mt_rand(1, 100);
 
-        if (!$firstLocationInMap) {
+        if ($randomPercent <= $newBiomProbability) {
             return $this->getRandomBiom();
+        } else {
+            $randomLocationKey = array_rand($previousLocations->getKeys());
+            /** @var Location $randomLocation */
+            $randomLocation = $previousLocations->get($randomLocationKey);
+            return $randomLocation->getBiom();
         }
-
-        $firstBiom = $firstLocationInMap->getBiom();
-        $locationsAreSame = true;
-
-        /** @var Location $location */
-        foreach ($map->toArray() as $location) {
-            if (!$location->getBiom()->equals($firstBiom)) {
-                $locationsAreSame = false;
-            }
-        }
-
-        if ($locationsAreSame) {
-            return $firstBiom;
-        }
-
-        return $this->getRandomBiom();
     }
 
     private function getRandomBiom(): Biom
