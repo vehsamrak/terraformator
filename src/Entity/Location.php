@@ -32,4 +32,14 @@ class Location
     {
         return $this->biom;
     }
+
+    public function getX(): int
+    {
+        return $this->x;
+    }
+
+    public function getY(): int
+    {
+        return $this->y;
+    }
 }
