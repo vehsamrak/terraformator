@@ -25,7 +25,7 @@ class BiomQualifier
     {
         $previousLocationsNumber = $previousLocations->count();
         $newBiomProbability = $previousLocationsNumber > 0 ? 50 - $previousLocationsNumber * 10 : 100;
-        $randomPercent = mt_rand(1, 100);
+        $randomPercent = $this->randomGenerator->generateRandomPercent();
 
         if ($randomPercent <= $newBiomProbability) {
             return $this->getRandomBiom();
