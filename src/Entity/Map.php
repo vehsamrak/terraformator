@@ -29,18 +29,6 @@ class Map extends ArrayCollection
         return parent::add($element);
     }
 
-    /** {@inheritDoc} */
-    public function first(): ?Location
-    {
-        $firstLocation = parent::first();
-
-        if (!$firstLocation) {
-            return null;
-        }
-
-        return $firstLocation;
-    }
-
     public function getPreviousLocations(int $x, int $y): PreviousLocationMap
     {
         // filtering north, north-west, north-east and west locations by X and Y
