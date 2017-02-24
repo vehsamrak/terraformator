@@ -12,7 +12,7 @@ Game map generator command-line tool.
 * Composer (if you dont have composer, visit https://getcomposer.org/download)
 
 ### Installation
-Clone this repository: `git clone https://github.com/Vehsamrak/terraformator.git && cd terraformator`
+Clone this repository: `git clone https://github.com/Vehsamrak/terraformator.git && cd $_`
 
 Install with composer: `composer install`
 
