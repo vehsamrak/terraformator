@@ -15,7 +15,6 @@ use Vehsamrak\Terraformator\Service\MapTransformer;
  */
 class TerraformCommand extends Command
 {
-
     private const MAP_WIDTH = 60;
     private const MAP_HEIGHT = 30;
 
