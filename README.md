@@ -21,3 +21,4 @@ Create text map with command: `php bin/terraform.php create`
 
 ### Tests
 To run tests with built-in PHPUnit type: `vendor/bin/phpunit`
+
